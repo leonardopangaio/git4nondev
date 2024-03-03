@@ -331,7 +331,12 @@ One of the main functions of git is to undo non-wanted changes or actions on cod
 ---
 ## 13. Manipulating Commits Across Branches
 
-There is a possibility to use a commit from one branch into another branch, using the `cherry-pic` method.
+There is a possibility to use a commit from one branch into another branch, using the `cherry-pick` method.
+
+---
+## 14. Gitflow
+
+There is a kind of standard that can show some methods to apply some best practices on code versioning. It's called GitFlow.
 
 ---
 ## References
