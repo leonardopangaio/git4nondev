@@ -6,7 +6,6 @@ This is write by a non-dev to non-dev people.
 
 ---
 ## Index
-
 1. [What is git?](#1-What-is-Git?)
 2. [Git configuration;](#2-Git-Configuration)
 3. [Creating or Clonning a Repository;](#3-Creating-or-Clonning-a-Repository)
@@ -20,7 +19,15 @@ This is write by a non-dev to non-dev people.
 11. [Tags;](#11-Tags)
 12. [Undoing Unwanted Changes;](#12-Undoing-Unwanted-Changes)
 13. [Manipulating Commits Across Branches;](#13-Manipulating-Commits-Across-Branches)
-14. [References;](#References)
+14. [Branches Strategies;](#14-Branches-Strategies)
+    - 14.1. [Gitflow;](#14.1-Gitflow)
+    - 14.2. [Trunk Based Development (TBD);](#14.2-Trunk-Based-Development-TBD)
+15. [Gitignore;](#15-Gitignore)
+16. [Reverse;](#16-Reverse)
+17. [Merge Request (MR) or Pull Request (PR;)](#17-Merge-Request-MR-or-Pull-Request-PR)
+18. [Git Fetch;](#18-Git-Fetch)
+19. [Management of SSH keys on different repositories;](#19-Management-of-SSH-keys-on-different-repositories)
+20. [References;](#References)
 
 ---
 ## 1. What is Git?
@@ -42,6 +49,7 @@ There is some principal configuration that's needed to do before starting to use
 ```sh
 git config --global user.name "User Name"
 ```
+
 2. E-mail;
 
 ```sh
@@ -84,6 +92,8 @@ To clone an external repository to local machine, can be used this command line,
 git clone "repository url"
 ```
 
+> :memo: **Note:** To clone an external repository using ssh method, it's necessary to add the public ssh key on repository. This ssh key depends on which repository it's used. [Here](#19-Management-of-SSH-keys-on-different-repositories) is a list of some reference urls for creating ssh keys.
+
 ---
 ## 4. Workflow
 
@@ -101,6 +111,8 @@ The git workflow has 3 principal steps:
 ![Principal Workflow](./Attachments/principal_workflow.png)
 
 ![Code Versions](./Attachments/code_versions.png)
+
+This is the principle of git workflows, but there are some frameworks that helps manage repositories, specialy to large teams. In this article there'll be described the two principals frameworks: [GitFlow](#14-Gitflow) and [Trunk Based Dev](#15-Trunk-Based-Development).
 
 ## 5. Add and Remove Files to Local Stage Area
 
@@ -327,22 +339,119 @@ One of the main functions of git is to undo non-wanted changes or actions on cod
         - `git checkout -b "NewBranchName"` will create a new branch and enter on it;
         - `git stash pop` will apply the changes, that are temporary stored on stash space, on the current branch;
 
+7. A scenario that it's needed to remove a file from a repository, but it cannot be on the history, for example, if credentials file were pushed to remote repository. The necessary steps are:
+    - Lets use the rebase interactive method to edit our commit, to do this, it'll be necessáry know the commit id before the desired commit that will be changed;
+    - With this command line`git rebase -i "commit_id"` will open a text editor displaying a list of the branch’s commits from the specified commit to the current one;
+    - Lets chose the commit that will be changed, and alter the text to edit, save and close the editor;
+    - Now it's possible to remove the desired file;
+    - Add the changes to stage with `git add .` command line;
+    - Continue the rebase with `git rebase --continue`;
+    - Confirme the new commit;
+    - Push to origin the commit edited with `git push origin main --force`;
+
+For some other scenarios, a good refer is this [article](https://www.abrahamberg.com/blog/git-remove-commits-from-branch-after-push-reset-revert-or-rebase/).
 
 ---
 ## 13. Manipulating Commits Across Branches
 
-There is a possibility to use a commit from one branch into another branch, using the `cherry-pick` method.
+There is a possibility to use a commit from one branch into another branch, using the [`cherry-pick`](https://git-scm.com/docs/git-cherry-pick) method.
+
+The cherry-pick copy a commit from other branch to the current branch.
+
+- e.g.:
+    ```sh
+    git cherry-pick "commit_ID"
+    ```
 
 ---
-## 14. Gitflow
+## 14. Branches Strategies
 
-There is a kind of standard that can show some methods to apply some best practices on code versioning. It's called GitFlow.
+There are some methods practiced by the development teams, like Trunk-Based Development, Feature branches or GitHub Flow, Forking strategy, Release branches, Git Flow, Environment branches, however we'll work on the two most common ones, GitFlow and Trunk-Based Development, in this article.
+
+### 14.1. Gitflow
+
+First of them are GitFlow, thats recommended to an open-source project, a junior development team or an established product. This git strategy is usualy used on large teams, and it's more complex than other strategies because the number of branches in a single project.
+
+1. **Main Branches:**
+
+   - **Master Branch:** This is like the final version of your project. It's the branch where your stable, production-ready code lives. Only code that is thoroughly tested and ready for release should be merged into the master branch. Usualy the main/master branch is the production branch.
+   
+   - **Develop Branch:** Think of this as the playground for your ongoing work. It's where all the development happens. When you start a new feature or fix a bug, you branch off from here. It's a reflection of the latest state of development.
+
+2. **Support Branches:**
+
+   - **Feature Branches:** Whenever you're working on a new feature or enhancement, you create a new branch off of "develop". This is where you do all your work for that specific feature. Once the feature is complete, it gets merged back into "develop".
+   
+   - **Release Branches:** When it's time to prepare for a new release, you create a new branch off of "develop". This is where you do final testing, bug fixing, and any last-minute changes specific to the release. Once everything is ready, this branch gets merged into both "master" and "develop".
+   
+   - **Hotfix Branches:** If a critical bug is found in production code (in the "master" branch), you create a new branch off of "master" to fix it immediately. This allows you to address the issue without disrupting ongoing development in the "develop" branch. Once fixed, this branch gets merged into both "master" and "develop".
+
+This setup ensures that your development process is organized and controlled. It helps separate ongoing work from stable code, making it easier to manage and release updates.
+
+![Gitflow Framework Diagram](./Attachments/gitflow_framework.png)
+
+### 14.2. Trunk Based Development (TBD)
+
+In the [trunk-based development](https://trunkbaseddevelopment.com/) framework, all developers work on a single branch with open access to it. Often it’s simply the master branch or trunk branch. They commit code to it and run it. In scaled trunk-based, can be created short-lived feature branches. Once code on their branch compiles and passess all tests, they merge it straight to master/trunk. It ensures that development is truly continuous and prevents developers from creating merge conflicts that are difficult to resolve.
+
+It's highly recommended to use feature flags or featura toggles in this method. To decouple deployment from release, TBD often utilizes feature flags. Feature flags allow developers to deploy code to production while keeping it hidden behind a flag until it's ready to be released. This enables teams to continuously deliver new features without disrupting users.
+
+![Official TBD diagram](./Attachments/official_tbd_diagram.png)
+
+### Reference urls
+
+- Git Flow // Dicionário do Programador (pt-br): https://youtu.be/oweffeS8TRc?si=HzIIqost-rMoqqvb
+- VERSIONAMENTO DE CÓDIGO: ENTENDENDO GITFLOW E TRUNK BASED DEVELOPMENT (pt-br): https://youtu.be/qKgiyJl_x_A?si=4NxFtJz8DRLhpRcX
+- Branching Strategies Explained (en): https://youtu.be/U_IFGpJDbeU?si=zqrTteQh9QfdsUJO
+- Trunk-based Development vs. Git Flow (en): https://www.toptal.com/software/trunk-based-development-git-flow
+- Trunk Based Development (pt-br): https://medium.com/@mateusdecampos/trunk-based-development-1770f5e0dfc1
+- Official Trunk-Based Development site (en): https://trunkbaseddevelopment.com/
+
+---
+## 15. Gitignore
+
+The file [.gitignore](https://git-scm.com/docs/gitignore) is a file that will be listed all files or folders that will be ignored to git tracking, i.e., the files or folders listed on .gitignore wont be tracked by git, so it'll not be staged, commited or pushed to remote repository.
+
+The official description is:
+> A gitignore file specifies intentionally untracked files that Git should ignore. Each line in a gitignore file specifies a pattern.
+
+---
+## 16. Reverse
+
+The [`git reverse`](https://git-scm.com/docs/git-revert) commnad reverse a sigle commit or a group of commits. It'll will create a new commit reversing the passed commit.
+
+---
+## 17. Merge Request (MR) or Pull Request (PR)
+
+Pull requests, also known as merge requests on other repository sistems, are requests made by a repository collaborator to merge it's own branche to another branche, usualy master/main or trunk. The PR (or MR) are used to make a code review with others developers before changes are merged on main/master branch, ensuring the quality and consistency of source-code.
+
+There is no coomand, on git, to make the PR/MR, they are made on repository administrative tool, there will be the option to open a pull request, where it's necessary to choose the source branch (that will be mergied) and the destination branch (that will recieve the changes).
+
+---
+## 18. Git Fetch
+
+The [`git fetch`](https://git-scm.com/docs/git-fetch) command is used to recover commits, branches and tags from a remote repository to local repository. It doesn't make any changes on local work direcory or local files. Instead of, it update the remote referencies (like origin/master) on local repository, to compare local commits with remote commits. This allows to see whats was changed on remote repository since the last local syncronization.
+
+---
+## 19. Management of SSH keys on different repositories
+
+Here goes a list with how to generate and add the ssh keys to principals comercials repositories.
+
+- **Github**
+    - Reference url: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+- **Gitlab**
+    - Reference url: https://docs.gitlab.com/ee/user/ssh.html
+- **Azure DevOps**
+    - Reference url: https://learn.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops
+- **Bitbucket**
+    - Reference url: https://support.atlassian.com/bitbucket-cloud/docs/configure-ssh-and-two-step-verification/
 
 ---
 ## References
 
-- https://www.youtube.com/watch?v=ts-H3W1uLMM&list=WL&index=118
-- https://en.wikipedia.org/wiki/Git
-- https://git-scm.com/book/en/v2
-- https://www.casadocodigo.com.br/pages/sumario-git-github
-- https://www.w3schools.com/git/default.asp
+- GIT: Mini Curso para Você Sair do Zero! (Aprenda em 45 Minutos) (pt-br): https://www.youtube.com/watch?v=ts-H3W1uLMM&list=WL&index=118
+- Qual a diferença entre os 3? - Tutorial para iniciantes GIT feat. Código Fonte TV (pt-br): https://youtu.be/vtX4TfWGfO8?si=lts_R-cDozCdlqPN
+- Wikipedia (en): https://en.wikipedia.org/wiki/Git
+- Git documentation (en): https://git-scm.com/book/en/v2
+- Controlando versões com Git e GitHub (pt-br book recomendation): https://www.casadocodigo.com.br/pages/sumario-git-github
+- W3Schools (en): https://www.w3schools.com/git/default.asp
