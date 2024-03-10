@@ -27,7 +27,8 @@ This is write by a non-dev to non-dev people.
 17. [Merge Request (MR) or Pull Request (PR;)](#17-Merge-Request-MR-or-Pull-Request-PR)
 18. [Git Fetch;](#18-Git-Fetch)
 19. [Management of SSH keys on different repositories;](#19-Management-of-SSH-keys-on-different-repositories)
-20. [References;](#References)
+20. [Git Reset, Restore and Rebase;](#20-Git-Reset-Restore-and-Rebase)
+21. [References;](#References)
 
 ---
 ## 1. What is Git?
@@ -183,8 +184,8 @@ Another simplified way to show the log is `git shortlog` command, that will show
 
 There is another kind of log on git called `git reflog` that shows all the actions made on repository, not necessarily just commits.
 
-Here is an example of `git log` on VSCode using Git Graph Extension.
 ![VSCode git log](./Attachments/vscode_git_log_gitgraph.png)
+*Here is an example of `git log` on VSCode using Git Graph Extension.*
 
 ---
 ## 8. Branches
@@ -400,12 +401,12 @@ It's highly recommended to use feature flags or featura toggles in this method. 
 
 ### Reference urls
 
-- Git Flow // Dicionário do Programador (pt-br): https://youtu.be/oweffeS8TRc?si=HzIIqost-rMoqqvb
-- VERSIONAMENTO DE CÓDIGO: ENTENDENDO GITFLOW E TRUNK BASED DEVELOPMENT (pt-br): https://youtu.be/qKgiyJl_x_A?si=4NxFtJz8DRLhpRcX
-- Branching Strategies Explained (en): https://youtu.be/U_IFGpJDbeU?si=zqrTteQh9QfdsUJO
-- Trunk-based Development vs. Git Flow (en): https://www.toptal.com/software/trunk-based-development-git-flow
-- Trunk Based Development (pt-br): https://medium.com/@mateusdecampos/trunk-based-development-1770f5e0dfc1
-- Official Trunk-Based Development site (en): https://trunkbaseddevelopment.com/
+- [Git Flow // Dicionário do Programador (pt-br)](https://youtu.be/oweffeS8TRc?si=HzIIqost-rMoqqvb)
+- [VERSIONAMENTO DE CÓDIGO: ENTENDENDO GITFLOW E TRUNK BASED DEVELOPMENT (pt-br)](https://youtu.be/qKgiyJl_x_A?si=4NxFtJz8DRLhpRcX)
+- [Branching Strategies Explained (en)](https://youtu.be/U_IFGpJDbeU?si=zqrTteQh9QfdsUJO)
+- [Trunk-based Development vs. Git Flow (en)](https://www.toptal.com/software/trunk-based-development-git-flow)
+- [Trunk Based Development (pt-br)](https://medium.com/@mateusdecampos/trunk-based-development-1770f5e0dfc1)
+- [Official Trunk-Based Development site (en)](https://trunkbaseddevelopment.com/)
 
 ---
 ## 15. Gitignore
@@ -446,12 +447,50 @@ Here goes a list with how to generate and add the ssh keys to principals comerci
 - **Bitbucket**
     - Reference url: https://support.atlassian.com/bitbucket-cloud/docs/configure-ssh-and-two-step-verification/
 
+## 20. Git Reset, Restore and Rebase
+
+Certainly! Let's break down each concept:
+
+1. **[Git Reset](https://git-scm.com/docs/git-reset)**:
+   - `git reset` is a command used to reset the current state of the repository to a specific point in history.
+   - It is primarily used to undo changes in your working directory, staging area, or commit history.
+   - There are three main flags used with `git reset`: `--soft`, `--mixed`, and `--hard`, each indicating different levels of reset.
+     - `--soft` resets the HEAD to a previous commit, keeping the changes in your working directory and staging area.
+     - `--mixed` resets the HEAD and the staging area to a previous commit, keeping the changes in your working directory.
+     - `--hard` resets the HEAD, staging area, and working directory to a previous commit, discarding all changes.
+
+2. **[Git Restore](https://git-scm.com/docs/git-restore)**:
+   - `git restore` is a command used to restore files in your working directory to their state at a specific commit or to discard changes.
+   - It's used to selectively restore files or directories to a previous state without affecting the staging area or commit history.
+   - Similar to `git checkout`, `git restore` can be used to undo modifications to files.
+
+3. **[Git Rebase](https://git-scm.com/docs/git-rebase)**:
+   - `git rebase` is a command used to reapply commits on top of another base commit.
+   - It's often used to integrate changes from one branch into another by moving or combining a sequence of commits onto a new base commit.
+   - Rebase essentially rewrites the commit history of a branch, which can result in a cleaner and more linear history compared to merging.
+   - It's particularly useful for maintaining a clean history when working in feature branches or collaborating with others.
+
+**Differences**:
+
+- **Purpose and Scope of Changes**:
+  - `git reset` is primarily used to move the HEAD and/or update the staging area and working directory. It can be used to reset changes at different levels (commit, staging area, working directory) depending on the flags used.
+  - `git restore` is used to restore files in the working directory to a previous state without affecting the staging area or commit history. It operates on the working directory, selectively restoring files or discarding changes.
+  - `git rebase` is used to reapply commits onto a new base commit, typically used for integrating changes from one branch into another. It involves restructuring the commit history of a branch, applying commits onto a new base.
+
+- **Effect on Commit History**:
+  - `git reset` and `git restore` do not directly modify the commit history. They affect the working directory and staging area.
+  - `git rebase` rewrites the commit history by applying commits on top of another base commit, potentially altering the commit history of a branch.
+
+In summary, `git reset` is for manipulating the state of the repository, `git restore` is for selectively restoring files, and `git rebase` is for integrating changes from one branch to another while maintaining a clean commit history.
+
+> :warning: **Warning:** The 'drop' option in interactive rebase allows you to remove a specific commit from your branch's history. This means that the commit and all its associated changes will not be included in the new baseline being created during the rebase. Git not only removes the commit from the baseline but also eliminates any associated changes from the local working directory. This means that the changes introduced by that commit will no longer be present in your project's files.
+
 ---
 ## References
 
-- GIT: Mini Curso para Você Sair do Zero! (Aprenda em 45 Minutos) (pt-br): https://www.youtube.com/watch?v=ts-H3W1uLMM&list=WL&index=118
-- Qual a diferença entre os 3? - Tutorial para iniciantes GIT feat. Código Fonte TV (pt-br): https://youtu.be/vtX4TfWGfO8?si=lts_R-cDozCdlqPN
-- Wikipedia (en): https://en.wikipedia.org/wiki/Git
-- Git documentation (en): https://git-scm.com/book/en/v2
-- Controlando versões com Git e GitHub (pt-br book recomendation): https://www.casadocodigo.com.br/pages/sumario-git-github
-- W3Schools (en): https://www.w3schools.com/git/default.asp
+- [GIT: Mini Curso para Você Sair do Zero! (Aprenda em 45 Minutos) (pt-br)](https://www.youtube.com/watch?v=ts-H3W1uLMM&list=WL&index=118)
+- [Qual a diferença entre os 3? - Tutorial para iniciantes GIT feat. Código Fonte TV (pt-br)](https://youtu.be/vtX4TfWGfO8?si=lts_R-cDozCdlqPN)
+- [Wikipedia (en)](https://en.wikipedia.org/wiki/Git)
+- [Git documentation (en)](https://git-scm.com/book/en/v2)
+- [Controlando versões com Git e GitHub (pt-br book recomendation)](https://www.casadocodigo.com.br/pages/sumario-git-github)
+- [W3Schools (en)](https://www.w3schools.com/git/default.asp)
