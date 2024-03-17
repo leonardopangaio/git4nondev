@@ -487,39 +487,6 @@ In summary, `git reset` is for manipulating the state of the repository, `git re
 > :warning: **Warning:** The 'drop' option in interactive rebase allows you to remove a specific commit from your branch's history. This means that the commit and all its associated changes will not be included in the new baseline being created during the rebase. Git not only removes the commit from the baseline but also eliminates any associated changes from the local working directory. This means that the changes introduced by that commit will no longer be present in your project's files.
 
 ---
-## 21. Using Git with Microsoft Visual Studio Code (vscode)
-
-It's not commom use git with CLI commands,  usualy it's used with some IDE/Dev Tool.
-
-Here will be some simples steps to use git on vscode to version the code.
-
-First of all, the code files needs to be saved to get shown on Source Control area;
-
-![Finding Source Control on VSCode](./Attachments/1-find_source_control.png)
-*Source controls showing that there are 2 changes.*
-
-On Source Control area, there is some principal itens that let us make an easy way to control whats will commited and pushed to remote repository.
-
-1. Its the Stage Area, where we can choose which files will be inserted on the commit;
-2. The commit message;
-3. Commit it-self;
-
-![Source Control Interface and Options](./Attachments/2-source_control.png)
-*Source Control interface with changes and options.*
-
-If we want, to add to commit, just a couple of files, not all, we can choose the desired files and add it to stage for the commit.
-
-Although if we whish to commit all the files and changes, we can just create a commit message and commit it.
-
-![Source Control Stage Area](./Attachments/3-source_controle_stage.png)
-*Choosing the changes to add on stage area.*
-
-Here, on Source Control area, there is a lot of git commands to simplify the code version control.
-
-![Source Control Git Options](./Attachments/4-source_controle_git_options.png)
-*Git options*
-
----
 ## References
 
 - [GIT: Mini Curso para Você Sair do Zero! (Aprenda em 45 Minutos) (pt-br)](https://www.youtube.com/watch?v=ts-H3W1uLMM&list=WL&index=118)
