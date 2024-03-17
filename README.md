@@ -2,7 +2,7 @@
 
 This repository has the intention to be an student notebook about git processes and some notation about some repositories.
 
-This is write by a non-dev to non-dev people.
+This is write by a curious non-dev to non-dev people.
 
 ---
 ## Index
@@ -24,11 +24,12 @@ This is write by a non-dev to non-dev people.
     - 14.2. [Trunk Based Development (TBD);](#14.2-Trunk-Based-Development-TBD)
 15. [Gitignore;](#15-Gitignore)
 16. [Reverse;](#16-Reverse)
-17. [Merge Request (MR) or Pull Request (PR;)](#17-Merge-Request-MR-or-Pull-Request-PR)
+17. [Merge Request (MR) or Pull Request (PR);)](#17-Merge-Request-MR-or-Pull-Request-PR)
 18. [Git Fetch;](#18-Git-Fetch)
 19. [Management of SSH keys on different repositories;](#19-Management-of-SSH-keys-on-different-repositories)
 20. [Git Reset, Restore and Rebase;](#20-Git-Reset-Restore-and-Rebase)
-21. [References;](#References)
+21. [Using Git with Microsoft Visual Studio Code (vscode);](#21-Using-Git-with-Microsoft-Visual-Studio-Code-vscode)
+22. [References;](#References)
 
 ---
 ## 1. What is Git?
@@ -518,6 +519,26 @@ Here, on Source Control area, there is a lot of git commands to simplify the cod
 
 ![Source Control Git Options](./Attachments/4-source_controle_git_options.png)
 *Git options*
+
+After that, lets write some commit message. This message is extremely important to let all the other devs, and our-selves, whats the changes were made on that commit.
+
+![Commit Message](./Attachments/5-source_controle_commit.png)
+*Commit message and commit the change*
+
+After the commit, lets sync/push the commit to remote repository.
+
+![Syncing the commit to remote repository.](./Attachments/6-source_control_sync.png)
+*The commit that will be synced and the branch that will recieve the commit.*
+
+Now it's possible to see the git history log using an external vscode extension called Git Graph. It's highly recommended to install this extension on vscode to simplify the job of see the git history.
+
+![Finding and Installing the Git Graph VSCode Extension](./Attachments/8-vscode_git_graph_extension.png)
+*Installing the Git Graph Extension.*
+
+After the previous installation, the git log is friendly showed with some diagrams.
+
+![Git History Log with Git Graph VSCode Extension](./Attachments/7-git_graph.png)
+*Git history log.*
 
 ---
 ## References
