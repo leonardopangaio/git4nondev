@@ -8,10 +8,10 @@ This is write by a curious non-dev to non-dev people.
 ## Index
 1. [What is git?](#1-What-is-Git?)
 2. [Git configuration;](#2-Git-Configuration)
-3. [Creating or Clonning a Repository;](#3-Creating-or-Clonning-a-Repository)
+3. [Creating or Cloning a Repository;](#3-creating-or-cloning-a-repository)
 4. [Workflow;](#4-Workflow)
 5. [Add and Remove Files to Local Stage Area;](#5-Add-and-Remove-Files-to-Local-Stage-Area)
-6. [Commiting the Changes;](#6-Commiting-the-Changes)
+6. [Committing the Changes;](#6-committing-the-changes)
 7. [Logs and History;](#7-Logs-and-History)
 8. [Branches;](#8-Branches)
 9. [External Repositories;](#9-External-Repositories)
@@ -38,7 +38,7 @@ Git is a program, created to version documents, that's is mostly used by develop
 
 By the way, this document is version by git, stored on Github repository.
 
-With git, a dev can control the version of the code, and syncronise the code on a remote server (repository), and work with others developers at the same time, in the same code.
+With git, a dev can control the version of the code, and synchronize the code on a remote server (repository), and work with others developers at the same time, in the same code.
 
 On official site of [git](git-scm.com) it's possible to find the documentation, an official book and much more.
 
@@ -62,7 +62,7 @@ git config --global user.email "user@email.com"
 
 On these commands, there is something important to know, when it's shows `--global`, it's about the git program, if it's not specified, can be the list of all configurations (local and global) or can be the configuration of a local repository.
 
-## 3. Creating or Clonning a Repository
+## 3. Creating or Cloning a Repository
 
 First of all, you, dear non-dev reader, need to know that a repository is where the document versions will be stored.
 
@@ -84,7 +84,7 @@ The second think that we might know, is the way the clone will be donne. If it w
 
 The difference is, when used HTTPS method, it will be necessary to input an user name and password to connect to the remote repository, when used SSH method, a SSH key will be stored on the remote repository, so it will not be necessary any interaction to clone or update the repository.
 
-The method is declarated in the URL used to clone the repository. Just to exemplify, there is the two methods URLs to clone this repository:
+The method is declared in the URL used to clone the repository. Just to exemplify, there is the two methods URLs to clone this repository:
 - **HTTPS:** `https://github.com/leonardopangaio/git4nondev.git`
 - **SSH:** `git@github.com:leonardopangaio/git4nondev.git`
 
@@ -99,10 +99,10 @@ git clone "repository url"
 ---
 ## 4. Workflow
 
-It's important to say that all the code changes will be just on local machine, and it's not automatcaly syncronized to repository. The developer needs to "say to git" when it's time to syncronize all the changes to repository. 
+It's important to say that all the code changes will be just on local machine, and it's not automatically synchronized to repository. The developer needs to "say to git" when it's time to synchronize all the changes to repository. 
 
 The git workflow has 3 principal steps:
-1. Local work direcory, where the app, or documentation, are coded;
+1. Local work directory, where the app, or documentation, are coded;
     - Everything done here, it's just stored here;
 2. Stage;
     - The stage step, is where git start to organize all the files and it's differences;
@@ -114,7 +114,7 @@ The git workflow has 3 principal steps:
 
 ![Code Versions](./Attachments/code_versions.png)
 
-This is the principle of git workflows, but there are some frameworks that helps manage repositories, specialy to large teams. In this article there'll be described the two principals frameworks: [GitFlow](#14-Gitflow) and [Trunk Based Dev](#15-Trunk-Based-Development).
+This is the principle of git workflows, but there are some frameworks that helps manage repositories, specially to large teams. In this article there'll be described the two principals frameworks: [GitFlow](#14-Gitflow) and [Trunk Based Dev](#15-Trunk-Based-Development).
 
 ## 5. Add and Remove Files to Local Stage Area
 
@@ -146,19 +146,19 @@ nenhuma modificação adicionada à submissão (utilize "git add" e/ou "git comm
 To show the differences between stage version and workdir version, the command line `git diff "file"` can be used. But it's highly recommended to use it on some IDE to make easier the visualization.
 
 ---
-## 6. Commiting the Changes
+## 6. Committing the Changes
 
-The commit is the momment that all the changes will be signaled to the remote repository. It's like a photograph of file status on that moment.
+The commit is the moment that all the changes will be signaled to the remote repository. It's like a photograph of file status on that moment.
 
 The commit has 4 principal itens:
 1. The file changes;
-2. An unique identifyer (hash);
+2. An unique identifier (hash);
 3. Metadata (e.g.: name or date of the change);
 4. A message to improve the identification;
 
 The commit it's too important to develop in a team, and to track changes.
 
-To commit something, can be used `git commit -m "commit message"` command. Once the commit has been done, the stage area is cleared, and it's ready to recieve new files changes.
+To commit something, can be used `git commit -m "commit message"` command. Once the commit has been done, the stage area is cleared, and it's ready to receive new files changes.
 
 > :bulb: **Tip:** It's possible to simplify the process, like a shortcut, using just one command to add on stage and commit at the same time. This command line is `git commit -a -m "message"`.
 
@@ -166,7 +166,7 @@ To commit something, can be used `git commit -m "commit message"` command. Once 
 
 Another important parameter of `git commit` is the `--amend` that makes possible to "remake" the last commit done.
 
-> :bulb: **Tip:** A good practice is to write a commit message that let other devs knows what was changeded without listing all the file differences. To make better messages or thinking about a standard way to write these messages, the [Conventional Commits](https://www.conventionalcommits.org/) is an usefull website.
+> :bulb: **Tip:** A good practice is to write a commit message that let other devs knows what was changed without listing all the file differences. To make better messages or thinking about a standard way to write these messages, the [Conventional Commits](https://www.conventionalcommits.org/) is an useful website.
 
 ---
 ## 7. Logs and History
@@ -179,7 +179,7 @@ To read the git commit log, the command line that can be used is `git log`. Usin
 
 An easier way to just list the commits of a repository is using `git log --oneline`.
 
-One example of flter parameter can be `--author="Author Name"`.
+One example of filter parameter can be `--author="Author Name"`.
 
 Another simplified way to show the log is `git shortlog` command, that will show the repository authors, the amount of commits by author and the commits itself. Or if it's just needed to know the amount of commits by author, can be used `git shortlog -sn` command.
 
@@ -195,9 +195,9 @@ The branch concept is one of the most important in the git context.
 
 The branch can be understand as different versions, or replicas of the code, coexisting simultaneously. It gives to the developer the security to code without change the principal code.
 
-The branch can be organized in differente ways, depending on project, environment, feature and other classifications that the team or organization defines. For example, in a project can exist 3 principal branches, one to production environment, other for homologation env and other to development env.
+The branch can be organized in different ways, depending on project, environment, feature and other classifications that the team or organization defines. For example, in a project can exist 3 principal branches, one to production environment, other for homologation env and other to development env.
 
-Here is a simple gitgraph diagram:
+Here is a simple git graph diagram:
 ```mermaid
 ---
 title: Example Git diagram
@@ -222,9 +222,9 @@ gitGraph TB:
     commit
 ```
 
-The principal branch usualy is called main or master.
+The principal branch usually is called main or master.
 
-It's possible to have how many branches are it's necessary, and so there is many commands to administrate all the branches. Commands to navegate between the branches, commands to unify/merge differente branches, etc...
+It's possible to have how many branches are it's necessary, and so there is many commands to administrate all the branches. Commands to navigate between the branches, commands to unify/merge different branches, etc...
 
 To create a new branch, can be used this command line `git branch "BranchName"`. On this example, the branch just was created, but not set as the used branch.
 
@@ -232,7 +232,7 @@ A suggest is to create the branch with the command `git checkout -b "BranchName"
 
 To remove a branch, the command `git branch -D "BranchName"` can be used.
 
-To navegate between the branches, the command `git checkout "BranchName"` can be used.
+To navigate between the branches, the command `git checkout "BranchName"` can be used.
 
 It's possible to rename a branch using `git branch -m "NewBranchName"` once the branch thats will be renamed is active.
 
@@ -243,7 +243,7 @@ It's possible to rename a branch using `git branch -m "NewBranchName"` once the 
 
 The external repositories are services that store the versioned code in a remote server.
 
-Plataformas like GitHub, Gitlab, Bitbucket, Azure Devops and so many others, works as a external storage to store the versioned code.
+Plataformas like GitHub, GitLab, Bitbucket, Azure Devops and so many others, works as a external storage to store the versioned code.
 
 To send the local repository to external, the command `git push` can be used. This command upload all the files of the current commit to the remote repository.
 
@@ -251,11 +251,11 @@ To retrieve the remote repository to local, the command `git pull` can be used. 
 
 ![Repositories](./Attachments/repositories.png)
 
-> :memo: **Note:** The `origin` term is refered to URL of the remote repository. If we run the command line `git remote -v` we will see that origin is an alias to the repository URL. Quick reference [here](https://stackoverflow.com/questions/9529497/what-is-origin-in-git).
+> :memo: **Note:** The `origin` term is referred to URL of the remote repository. If we run the command line `git remote -v` we will see that origin is an alias to the repository URL. Quick reference [here](https://stackoverflow.com/questions/9529497/what-is-origin-in-git).
 
-An intersting commnad to list the informations about the remote repository is `git remote show origin`. It'll shows information about origin, branches, and some other informations.
+An interesting command to list the information about the remote repository is `git remote show origin`. It'll shows information about origin, branches, and some other information.
 
-If the remote repository changed the URL, it's possible to ajust on local repository with the command line `git remote set-url origin "NewRemoteRepositoryURL"`.
+If the remote repository changed the URL, it's possible to adjust on local repository with the command line `git remote set-url origin "NewRemoteRepositoryURL"`.
 
 There is another way to get the remote repository data to local, that's using the command `git fetch`. The principal difference between `git fetch` and `git pull` it's that `git pull` will get the remote data and update local repository and working directory, and `git fetch` will only get the remote repository data to local repository, it'll not update the working directory. 
 
@@ -268,7 +268,7 @@ There is another way to get the remote repository data to local, that's using th
 
 After all the work in the project, on different branches, it's time to unify the main and the other branch. In this case, can be used the command `git merge "BranchName"` inside the `main/master` branch.
 
-If there are merge conflicts, there is two default ways to proceed, 1st is to use `git merge --abort` to cancel de merge, ajust the code and merge again the code, or the code can be ajusted and runs the `git merge --continue` command line.
+If there are merge conflicts, there is two default ways to proceed, 1st is to use `git merge --abort` to cancel de merge, adjust the code and merge again the code, or the code can be adjusted and runs the `git merge --continue` command line.
 
 The other way to merge two different branches is using the `rebase` command, on that way, the second branch will be updated with the last commits of main/master. It's like all the commits from a branch were copied to another branch.
 
@@ -284,26 +284,26 @@ In this example, we should have this kind of change, between branches:
 |-------------|------------|
 |![Before Rebase](./Attachments/before_rebase.png)|![After Rebase](./Attachments/after_rebase.png)|
 
-It can be done for both sides, other branchs -> main/master or main/master -> other branches.
+It can be done for both sides, other branches -> main/master or main/master -> other branches.
 
 ![Difference Between Merge and Rebase](./Attachments/difference_merge_rebase.png)
 
-Another way to understand the difference between then is to think that `git commit` will preserv all the history and order of the commits, and the `git rebase` will make a linear history of all commits.
+Another way to understand the difference between then is to think that `git commit` will preserve all the history and order of the commits, and the `git rebase` will make a linear history of all commits.
 
 > :memo: **Note:** The conflict handle is similar than the merge method. Can be used `git rebase --abort` to cancel the rebase or used `git rebase --continue` to try again after the conflicts were fixed.
 
 ---
 ## 11. Tags
 
-They are just like labels to the commits, to make easier to find some commits. Usualy used to identify the specific commits that will be deployed or it's in homologation fase.
+They are just like labels to the commits, to make easier to find some commits. Usually used to identify the specific commits that will be deployed or it's in homologation fase.
 
-The tags are differente of branches, because branches are mutable, and tags are not.
+The tags are different of branches, because branches are mutable, and tags are not.
 
 There are two types of tag, `lightweight` and `annotated`. Here is the [official description](https://git-scm.com/docs/git-tag) of then:
 
 > "Tag objects [...] are called "annotated" tags; they contain a creation date, the tagger name and e-mail, a tagging message, and an optional GnuPG signature. Whereas a "lightweight" tag is simply a name for an object (usually a commit object)."
 
-Usualy the lightweight tags are used to simple mark a specific commit, and the annotated tags are used to identify a specific version.
+Usually the lightweight tags are used to simple mark a specific commit, and the annotated tags are used to identify a specific version.
 
 To add a lightweight tag, the command line is `git tag "TagName"`, and to remove, from local repository the command line is `git tag -d "TagName"`, and the command line to remove a tag from remote repository is `git push origin --delete "TagName"`.
 
@@ -320,29 +320,29 @@ Some examples of tag utilization are release versions, control points and integr
 
 One of the main functions of git is to undo non-wanted changes or actions on code or repository.
 
-1. `git checkout -- "FileName"`: This command line will return the local repository status to before the change. It's possible because was not put on stage area and it was an uncommited change;
+1. `git checkout -- "FileName"`: This command line will return the local repository status to before the change. It's possible because was not put on stage area and it was an uncommitted change;
 
-2. `git reset --hard HEAD`: This command line will return the stage area to before the change. It's possible because was an uncommited change;
+2. `git reset --hard HEAD`: This command line will return the stage area to before the change. It's possible because was an uncommitted change;
 
-3. `git reset --hard HEAD-1`: This command line will return the local commit to before the change. It's possible because was an uncommited change on remote repository;
+3. `git reset --hard HEAD-1`: This command line will return the local commit to before the change. It's possible because was an uncommitted change on remote repository;
 
 4. `git commit --amend`: This command line will open an separated editor to re-do the commit, after necessary manual code fix, and it enables the creation of a new message;
 
-5. `git reverse "CommitID"`: This command line will create a new commit without the changes on the commit declaired by "CommitID". It's usefull when the entire commit will be "reversed", ignoring all the changes inside it. Note that this command will reverse just local repository, to force the reverse on remote repository will be necessary use the `git push origin "BranchName" --force` command line;
+5. `git reverse "CommitID"`: This command line will create a new commit without the changes on the commit declared by "CommitID". It's useful when the entire commit will be "reversed", ignoring all the changes inside it. Note that this command will reverse just local repository, to force the reverse on remote repository will be necessary use the `git push origin "BranchName" --force` command line;
 
-6. Imagine a cenario where the developer wrote some code and notice that wrote everything on a main/master branch. There is an way to fix that with some command lines:
+6. Imagine a scenario where the developer wrote some code and notice that wrote everything on a main/master branch. There is an way to fix that with some command lines:
     ```sh
     git stash
     git checkout -b "NewBranchName"
     git stash pop
     ```
     - Explaining the commands:
-        - `git stash` will create a temporary area to store the code changes that are not staged or commited;
+        - `git stash` will create a temporary area to store the code changes that are not staged or committed;
         - `git checkout -b "NewBranchName"` will create a new branch and enter on it;
         - `git stash pop` will apply the changes, that are temporary stored on stash space, on the current branch;
 
 7. A scenario that it's needed to remove a file from a repository, but it cannot be on the history, for example, if credentials file were pushed to remote repository. The necessary steps are:
-    - Lets use the rebase interactive method to edit our commit, to do this, it'll be necessáry know the commit id before the desired commit that will be changed;
+    - Lets use the rebase interactive method to edit our commit, to do this, it'll be necessary know the commit id before the desired commit that will be changed;
     - With this command line`git rebase -i "commit_id"` will open a text editor displaying a list of the branch’s commits from the specified commit to the current one;
     - Lets chose the commit that will be changed, and alter the text to edit, save and close the editor;
     - Now it's possible to remove the desired file;
@@ -372,11 +372,11 @@ There are some methods practiced by the development teams, like Trunk-Based Deve
 
 ### 14.1. Gitflow
 
-First of them are GitFlow, thats recommended to an open-source project, a junior development team or an established product. This git strategy is usualy used on large teams, and it's more complex than other strategies because the number of branches in a single project.
+First of them are GitFlow, thats recommended to an open-source project, a junior development team or an established product. This git strategy is usually used on large teams, and it's more complex than other strategies because the number of branches in a single project.
 
 1. **Main Branches:**
 
-   - **Master Branch:** This is like the final version of your project. It's the branch where your stable, production-ready code lives. Only code that is thoroughly tested and ready for release should be merged into the master branch. Usualy the main/master branch is the production branch.
+   - **Master Branch:** This is like the final version of your project. It's the branch where your stable, production-ready code lives. Only code that is thoroughly tested and ready for release should be merged into the master branch. Usually the main/master branch is the production branch.
    
    - **Develop Branch:** Think of this as the playground for your ongoing work. It's where all the development happens. When you start a new feature or fix a bug, you branch off from here. It's a reflection of the latest state of development.
 
@@ -394,9 +394,9 @@ This setup ensures that your development process is organized and controlled. It
 
 ### 14.2. Trunk Based Development (TBD)
 
-In the [trunk-based development](https://trunkbaseddevelopment.com/) framework, all developers work on a single branch with open access to it. Often it’s simply the master branch or trunk branch. They commit code to it and run it. In scaled trunk-based, can be created short-lived feature branches. Once code on their branch compiles and passess all tests, they merge it straight to master/trunk. It ensures that development is truly continuous and prevents developers from creating merge conflicts that are difficult to resolve.
+In the [trunk-based development](https://trunkbaseddevelopment.com/) framework, all developers work on a single branch with open access to it. Often it’s simply the master branch or trunk branch. They commit code to it and run it. In scaled trunk-based, can be created short-lived feature branches. Once code on their branch compiles and passes all tests, they merge it straight to master/trunk. It ensures that development is truly continuous and prevents developers from creating merge conflicts that are difficult to resolve.
 
-It's highly recommended to use feature flags or featura toggles in this method. To decouple deployment from release, TBD often utilizes feature flags. Feature flags allow developers to deploy code to production while keeping it hidden behind a flag until it's ready to be released. This enables teams to continuously deliver new features without disrupting users.
+It's highly recommended to use feature flags or feature toggles in this method. To decouple deployment from release, TBD often utilizes feature flags. Feature flags allow developers to deploy code to production while keeping it hidden behind a flag until it's ready to be released. This enables teams to continuously deliver new features without disrupting users.
 
 ![Official TBD diagram](./Attachments/official_tbd_diagram.png)
 
@@ -413,7 +413,7 @@ It's highly recommended to use feature flags or featura toggles in this method. 
 ---
 ## 15. Gitignore
 
-The file [.gitignore](https://git-scm.com/docs/gitignore) is a file that will be listed all files or folders that will be ignored to git tracking, i.e., the files or folders listed on .gitignore wont be tracked by git, so it'll not be staged, commited or pushed to remote repository.
+The file [.gitignore](https://git-scm.com/docs/gitignore) is a file that will be listed all files or folders that will be ignored to git tracking, i.e., the files or folders listed on .gitignore wont be tracked by git, so it'll not be staged, committed or pushed to remote repository.
 
 The official description is:
 > A gitignore file specifies intentionally untracked files that Git should ignore. Each line in a gitignore file specifies a pattern.
@@ -421,28 +421,28 @@ The official description is:
 ---
 ## 16. Reverse
 
-The [`git reverse`](https://git-scm.com/docs/git-revert) commnad reverse a sigle commit or a group of commits. It'll will create a new commit reversing the passed commit.
+The [`git reverse`](https://git-scm.com/docs/git-revert) command reverse a sigle commit or a group of commits. It'll will create a new commit reversing the passed commit.
 
 ---
 ## 17. Merge Request (MR) or Pull Request (PR)
 
-Pull requests, also known as merge requests on other repository sistems, are requests made by a repository collaborator to merge it's own branche to another branche, usualy master/main or trunk. The PR (or MR) are used to make a code review with others developers before changes are merged on main/master branch, ensuring the quality and consistency of source-code.
+Pull requests, also known as merge requests on other repository systems, are requests made by a repository collaborator to merge it's own branch to another branch, usually master/main or trunk. The PR (or MR) are used to make a code review with others developers before changes are merged on main/master branch, ensuring the quality and consistency of source-code.
 
-There is no coomand, on git, to make the PR/MR, they are made on repository administrative tool, there will be the option to open a pull request, where it's necessary to choose the source branch (that will be mergied) and the destination branch (that will recieve the changes).
+There is no command, on git, to make the PR/MR, they are made on repository administrative tool, there will be the option to open a pull request, where it's necessary to choose the source branch (that will be merged) and the destination branch (that will receive the changes).
 
 ---
 ## 18. Git Fetch
 
-The [`git fetch`](https://git-scm.com/docs/git-fetch) command is used to recover commits, branches and tags from a remote repository to local repository. It doesn't make any changes on local work direcory or local files. Instead of, it update the remote referencies (like origin/master) on local repository, to compare local commits with remote commits. This allows to see whats was changed on remote repository since the last local syncronization.
+The [`git fetch`](https://git-scm.com/docs/git-fetch) command is used to recover commits, branches and tags from a remote repository to local repository. It doesn't make any changes on local work directory or local files. Instead of, it update the remote referencies (like origin/master) on local repository, to compare local commits with remote commits. This allows to see whats was changed on remote repository since the last local synchronization.
 
 ---
 ## 19. Management of SSH keys on different repositories
 
-Here goes a list with how to generate and add the ssh keys to principals comercials repositories.
+Here goes a list with how to generate and add the ssh keys to principals commercials repositories.
 
-- **Github**
+- **GitHub**
     - Reference url: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
-- **Gitlab**
+- **GitLab**
     - Reference url: https://docs.gitlab.com/ee/user/ssh.html
 - **Azure DevOps**
     - Reference url: https://learn.microsoft.com/en-us/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops
@@ -490,7 +490,7 @@ In summary, `git reset` is for manipulating the state of the repository, `git re
 ---
 ## 21. Using Git with Microsoft Visual Studio Code (vscode)
 
-It's not commom use git with CLI commands,  usualy it's used with some IDE/Dev Tool.
+It's not common use git with CLI commands,  usually it's used with some IDE/Dev Tool.
 
 Here will be some simples steps to use git on vscode to version the code.
 
@@ -499,7 +499,7 @@ First of all, the code files needs to be saved to get shown on Source Control ar
 ![Finding Source Control on VSCode](./Attachments/1-find_source_control.png)
 *Source controls showing that there are 2 changes.*
 
-On Source Control area, there is some principal itens that let us make an easy way to control whats will commited and pushed to remote repository.
+On Source Control area, there is some principal itens that let us make an easy way to control whats will committed and pushed to remote repository.
 
 1. Its the Stage Area, where we can choose which files will be inserted on the commit;
 2. The commit message;
@@ -528,7 +528,7 @@ After that, lets write some commit message. This message is extremely important 
 After the commit, lets sync/push the commit to remote repository.
 
 ![Syncing the commit to remote repository.](./Attachments/6-source_control_sync.png)
-*The commit that will be synced and the branch that will recieve the commit.*
+*The commit that will be synced and the branch that will receive the commit.*
 
 Now it's possible to see the git history log using an external vscode extension called Git Graph. It's highly recommended to install this extension on vscode to simplify the job of see the git history.
 
@@ -547,7 +547,7 @@ After the previous installation, the git log is friendly showed with some diagra
 - [Qual a diferença entre os 3? - Tutorial para iniciantes GIT feat. Código Fonte TV (pt-br)](https://youtu.be/vtX4TfWGfO8?si=lts_R-cDozCdlqPN)
 - [Wikipedia (en)](https://en.wikipedia.org/wiki/Git)
 - [Git documentation (en)](https://git-scm.com/book/en/v2)
-- [Controlando versões com Git e GitHub (pt-br book recomendation)](https://www.casadocodigo.com.br/pages/sumario-git-github)
+- [Controlando versões com Git e GitHub (pt-br book recommendation)](https://www.casadocodigo.com.br/pages/sumario-git-github)
 - [W3Schools (en)](https://www.w3schools.com/git/default.asp)
 - [Como trabalhar com Git e GitHub no VsCode | Tutorial (pt-br)](https://youtu.be/HIqyLRKv-YE?si=hrC1_n439chqvXd-)
 - [Como trabalhar com GIT e GITHUB | Parte I (pt-br)](https://youtu.be/Ckig8H_h538?si=Wenh2iE3wyOLMvyo)
