@@ -1,6 +1,6 @@
 # git4nondev
 
-This repository has the intention to be an student notebook about git processes and some notation about some repositories.
+This documentation has the intention to be an student notebook about git processes and some notation about repositories.
 
 This is write by a curious non-dev to non-dev people.
 
@@ -117,7 +117,7 @@ The git workflow has 3 principal steps:
 This is the principle of git workflows, but there are some frameworks that helps manage repositories, specially to large teams. In this article there'll be described the two principals frameworks: [GitFlow](#14-Gitflow) and [Trunk Based Dev](#15-Trunk-Based-Development).
 
 ## 5. Add and Remove Files to Local Stage Area
-
+<!-- TODO: O git reset não aplica a nova versão, ele simplesmente remove o arquivo modificado da stage area. O restore remove as  modificações feitas após a entrada na stage area. -->
 Using the command `git add "file"` the file will be add on stage area.
 
 If more than 1 file was changed, using the command `git status` command it'll be show the files that were changed and don't are in stage area.
@@ -147,7 +147,7 @@ To show the differences between stage version and workdir version, the command l
 
 ---
 ## 6. Committing the Changes
-
+<!-- TODO: Commit não é pra modificar o central, é pra confirmar a mudança. Faltou explorar os commandos git cherry pick, git squash aqui. Add some IA that write commit messages based on the content (code) -->
 The commit is the moment that all the changes will be signaled to the remote repository. It's like a photograph of file status on that moment.
 
 The commit has 4 principal itens:
@@ -190,7 +190,7 @@ There is another kind of log on git called `git reflog` that shows all the actio
 
 ---
 ## 8. Branches
-
+<!-- TODO: Seria melhor explorar mais a semântica de versões,por exemplo versão baseline, versão estável... Podemos explorar um pouco mais sobre como as branches podem ser úteis na hora de gerar versões distintas do mesmo código. -->
 The branch concept is one of the most important in the git context.
 
 The branch can be understand as different versions, or replicas of the code, coexisting simultaneously. It gives to the developer the security to code without change the principal code.
@@ -317,7 +317,7 @@ Some examples of tag utilization are release versions, control points and integr
 
 ---
 ## 12. Undoing Unwanted Changes
-
+<!-- TODO: Senti falta de mostrar níveis do git reset, que são : Hard,  Midex and Soft Discard, pq essa info está lá no final. -->
 One of the main functions of git is to undo non-wanted changes or actions on code or repository.
 
 1. `git checkout -- "FileName"`: This command line will return the local repository status to before the change. It's possible because was not put on stage area and it was an uncommitted change;
@@ -539,6 +539,26 @@ After the previous installation, the git log is friendly showed with some diagra
 
 ![Git History Log with Git Graph VSCode Extension](./Attachments/7-git_graph.png)
 *Git history log.*
+
+## 22. Using Git to push on 2 remote repositories
+
+Some times is interesting to push to two remote repositories, to make some kind of backup. 
+
+This can be possible with these simple steps:
+1. Adding the desired remote repositories:
+    ```git
+    git remote set-url --add --push origin git://original/repo.git
+    git remote set-url --add --push origin git://another/repo.git
+    ```
+2. Verifying that the repositories were add on git config:
+    ```git
+    git remote -v
+    ```
+
+> :memo: **Note:** It's important to know that it's possible to push to two remote repositories, not fetch/pull from two repositories.
+
+### Reference URL
+    - https://stackoverflow.com/questions/14290113/git-pushing-code-to-two-remotes
 
 ---
 ## References
