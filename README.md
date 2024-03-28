@@ -29,7 +29,9 @@ This is write by a curious non-dev to non-dev people.
 19. [Management of SSH keys on different repositories;](#19-Management-of-SSH-keys-on-different-repositories)
 20. [Git Reset, Restore and Rebase;](#20-Git-Reset-Restore-and-Rebase)
 21. [Using Git with Microsoft Visual Studio Code (vscode);](#21-Using-Git-with-Microsoft-Visual-Studio-Code-vscode)
-22. [References;](#References)
+22. [Using Git to push on 2 remote repositories;](#22-Using-Git-to-push-on-2-remote-repositories)
+23. [Quick Reference;](#23-Quick-Reference)
+24. [References;](#References)
 
 ---
 ## 1. What is Git?
