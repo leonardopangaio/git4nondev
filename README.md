@@ -34,7 +34,7 @@ This is write by a curious non-dev to non-dev people.
 ---
 ## 1. What is Git?
 
-Git is a program, created to version documents, that's is mostly used by developers, but can use by anyone that wants to version documents.
+Git is a program, created to version documents, that's is mostly used by developers, but anyone, that wants to version documents, can use.
 
 By the way, this document is version by git, stored on Github repository.
 
@@ -64,7 +64,7 @@ On these commands, there is something important to know, when it's shows `--glob
 
 ## 3. Creating or Cloning a Repository
 
-First of all, you, dear non-dev reader, need to know that a repository is where the document versions will be stored.
+First of all, you, dear non-dev reader, need to know that a repository is where the document versions will be stored. It can be local repository or remote repository.
 
 **Creating a Repository**
 
@@ -94,7 +94,7 @@ To clone an external repository to local machine, can be used this command line,
 git clone "repository url"
 ```
 
-> :memo: **Note:** To clone an external repository using ssh method, it's necessary to add the public ssh key on repository. This ssh key depends on which repository it's used. [Here](#19-Management-of-SSH-keys-on-different-repositories) is a list of some reference urls for creating ssh keys.
+> :memo: **Note:** To clone an external repository using ssh method, it's necessary to add the public ssh key on repository. This ssh key depends on which repository it's used. [Here](#19-Management-of-SSH-keys-on-different-repositories) is a list of some reference urls for creating ssh keys and configure some commercial repositories.
 
 ---
 ## 4. Workflow
@@ -117,14 +117,14 @@ The git workflow has 3 principal steps:
 This is the principle of git workflows, but there are some frameworks that helps manage repositories, specially to large teams. In this article there'll be described the two principals frameworks: [GitFlow](#14-Gitflow) and [Trunk Based Dev](#15-Trunk-Based-Development).
 
 ## 5. Add and Remove Files to Local Stage Area
-<!-- TODO: O git reset não aplica a nova versão, ele simplesmente remove o arquivo modificado da stage area. O restore remove as  modificações feitas após a entrada na stage area. -->
+
 Using the command `git add "file"` the file will be add on stage area.
 
 If more than 1 file was changed, using the command `git status` command it'll be show the files that were changed and don't are in stage area.
 
 > :bulb: **Tip:** If more than one file was changed, can be used `git add .` command to add all these files on stage area.
 
-It's important to note that when a file is added on stage area and it has new changes, it will be show as a different version of file of stage area. To apply this new version, can be used `git reset "file"` command to refresh the file version on stage area. However if the intention is to restore the file on workdir to the version that's in stage area, can be used `gir restore "file"` command to do it.
+It's important to note that when a file is added on stage area and it has new changes, it will be show as a different version of file of stage area. 
 
 This is an example of `git status` command output:
 ```log
@@ -147,8 +147,8 @@ To show the differences between stage version and workdir version, the command l
 
 ---
 ## 6. Committing the Changes
-<!-- TODO: Commit não é pra modificar o central, é pra confirmar a mudança. Faltou explorar os commandos git cherry pick, git squash aqui. Add some IA that write commit messages based on the content (code) -->
-The commit is the moment that all the changes will be signaled to the remote repository. It's like a photograph of file status on that moment.
+
+The commit is the moment that all the changes are recorded on local repository. It's like a photograph of file status on that moment.
 
 The commit has 4 principal itens:
 1. The file changes;
@@ -190,14 +190,15 @@ There is another kind of log on git called `git reflog` that shows all the actio
 
 ---
 ## 8. Branches
-<!-- TODO: Seria melhor explorar mais a semântica de versões,por exemplo versão baseline, versão estável... Podemos explorar um pouco mais sobre como as branches podem ser úteis na hora de gerar versões distintas do mesmo código. -->
+
 The branch concept is one of the most important in the git context.
 
 The branch can be understand as different versions, or replicas of the code, coexisting simultaneously. It gives to the developer the security to code without change the principal code.
 
-The branch can be organized in different ways, depending on project, environment, feature and other classifications that the team or organization defines. For example, in a project can exist 3 principal branches, one to production environment, other for homologation env and other to development env.
+The branch can be organized in different ways, depending on project, environment, feature and other classifications that the team or organization defines. For example, in a project can exist 3 principal branches, one to production environment, other for homologation env and other to development env. For a little more information about branches strategies, [here](#14-Branches-Strategies) are something about the usually strategies.
 
 Here is a simple git graph diagram:
+
 ```mermaid
 ---
 title: Example Git diagram
@@ -317,7 +318,7 @@ Some examples of tag utilization are release versions, control points and integr
 
 ---
 ## 12. Undoing Unwanted Changes
-<!-- TODO: Senti falta de mostrar níveis do git reset, que são : Hard,  Midex and Soft Discard, pq essa info está lá no final. -->
+
 One of the main functions of git is to undo non-wanted changes or actions on code or repository.
 
 1. `git checkout -- "FileName"`: This command line will return the local repository status to before the change. It's possible because was not put on stage area and it was an uncommitted change;
@@ -559,6 +560,71 @@ This can be possible with these simple steps:
 
 ### Reference URL
     - https://stackoverflow.com/questions/14290113/git-pushing-code-to-two-remotes
+
+---
+## 23. Quick Reference
+
+**Setup and Configuration**
+
+|Command|Description|
+|---|---|
+|[git config](https://git-scm.com/docs/git-config)|Get and set repository or global options|
+
+**Getting and Creating Projects**
+
+|Command|Description|
+|---|---|
+|[git init](https://git-scm.com/docs/git-init)|Create an empty Git repository or reinitialize an existing one|
+|[git clone](https://git-scm.com/docs/git-clone)|Clone a repository into a new directory|
+
+**Basic Snapshotting**
+
+|Command|Description|
+|---|---|
+|[git add](https://git-scm.com/docs/git-add)|Add file contents to the index|
+|[git status](https://git-scm.com/docs/git-status)|Show the working tree status|
+|[git diff](https://git-scm.com/docs/git-diff)|Show changes between commits, commit and working tree, etc|
+|[git commit](https://git-scm.com/docs/git-commit)|Record changes to the repository|
+|[git restore](https://git-scm.com/docs/git-restore)|Restore working tree files|
+|[git reset](https://git-scm.com/docs/git-reset)|Reset current HEAD to the specified state|
+|[git shortlog](https://git-scm.com/docs/git-shortlog)|Summarize `git log` output|
+
+**Branching and Merging**
+
+|Command|Description|
+|---|---|
+|[git branch](https://git-scm.com/docs/git-branch)|List, create, or delete branches|
+|[git checkout](https://git-scm.com/docs/git-checkout)|Switch branches or restore working tree files|
+|[git merge](https://git-scm.com/docs/git-merge)|Join two or more development histories together|
+|[git log](https://git-scm.com/docs/git-log)|Show commit logs|
+|[git stash](https://git-scm.com/docs/git-stash)|Stash the changes in a dirty working directory away|
+|[git tag](https://git-scm.com/docs/git-tag)|Create, list, delete or verify a tag object signed with GPG|
+
+**Sharing and Updating Projects**
+
+|Command|Description|
+|---|---|
+|[git fetch](https://git-scm.com/docs/git-fetch)|Download objects and refs from another repository|
+|[git pull](https://git-scm.com/docs/git-pull)|Fetch from and integrate with another repository or a local branch|
+|[git push](https://git-scm.com/docs/git-push)|Update remote refs along with associated objects|
+|[git remote](https://git-scm.com/docs/git-remote)|Manage set of tracked repositories|
+
+**Patching**
+
+|Command|Description|
+|---|---|
+|[git apply](https://git-scm.com/docs/git-apply)|Apply a patch to files and/or to the index|
+|[git cherry-pick](https://git-scm.com/docs/git-cherry-pick)|Apply the changes introduced by some existing commits|
+|[git rebase](https://git-scm.com/docs/git-rebase)|Reapply commits on top of another base tip|
+|[git revert](https://git-scm.com/docs/git-revert)|Revert some existing commits|
+
+**Guides**
+
+|File|Description|
+|---|---|
+|[.gitignore](https://git-scm.com/docs/gitignore)|Specifies intentionally untracked files to ignore|
+
+Here is a simple quick reference, for more information consider read the [official documentation](https://git-scm.com/doc).
 
 ---
 ## References
